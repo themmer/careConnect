@@ -61,24 +61,31 @@
   {{/paper-card}}
 
   {{#paper-card as |card|}}
-    {{#paper-item class="md-2-line" }}
-      <div class="md-list-item-text">
-        <div>
-          <span class="md-body-2">
-            <div>CHI Health Lakeside</div>
-            <div>Omaha, NE 68130</div>
-          </span>
+    {{#card.title as |title|}}
+      {{#title.text as |text|}}
+        {{#text.headline}}Select a Provider{{/text.headline}}
+      {{/title.text}}
+    {{/card.title}}
+    {{#card.content class="layout-column" }}
+      {{#paper-item class="md-2-line" }}
+        <div class="md-list-item-text">
+          <div>
+            <span class="md-body-2">
+              <div>CHI Health Lakeside</div>
+              <div>Omaha, NE 68130</div>
+            </span>
+          </div>
         </div>
-      </div>
-      {{paper-divider}}
-      <div class="layout-row layout-xs-column">
-        {{#paper-button primary=true raised=true onClick=(action "submitStep")}}Select{{/paper-button}}
-      </div>
-    {{/paper-item}}
+        {{paper-divider}}
+        <div class="layout-row layout-xs-column">
+          {{#paper-button primary=true raised=true onClick=(action "submitStep")}}Select{{/paper-button}}
+        </div>
+      {{/paper-item}}
+    {{/card.content}}
   {{/paper-card}}
 {{/if}}
 
-{{#if (eq step 2)}}
+{{#if (eq step 1)}}
   {{#paper-card class="flex" as |card|}}
     {{#card.title as |title|}}
       {{#title.text as |text|}}
@@ -110,8 +117,8 @@
   {{/paper-card}}
 {{/if}}
 
-{{#if (eq step 3)}}
-  3
+{{#if (eq step 1)}}
+  <img src="assets/img/calendar.png" width="800" height="600">
 {{/if}}
 
 <br /><br />
