@@ -1,0 +1,19 @@
+{{#paper-card as |card|}}
+  {{#paper-list}}
+    {{#paper-item class="md-3-line" }}
+      <div class="md-list-item-text">
+        <div>
+          <span class="md-body-1">
+            <div>September 24, 2018</div>
+            <div>3:15 PM</div>
+            <div>CHI Health Lakeside</div>
+          </span>
+        </div>
+      </div>
+      {{paper-divider}}
+      <div class="layout-row layout-xs-column">
+        {{#paper-button primary=true raised=true onClick=(transition-to "appointment-view")}}View{{/paper-button}}
+      </div>
+    {{/paper-item}}
+  {{/paper-list}}
+{{/paper-card}}

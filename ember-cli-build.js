@@ -1,9 +1,26 @@
 'use strict';
 
+const env = process.env.EMBER_ENV;
 const EmberApp = require('ember-cli/lib/broccoli/ember-app');
+const Funnel = require('broccoli-funnel');
 
 module.exports = function(defaults) {
   let app = new EmberApp(defaults, {
+    sassOptions: {
+      includePaths: ['node_modules/ember-paper/app/styles', 'node_modules/roboto-npm-webfont']
+    },
+
+    // Fingerprinting
+    fingerprint: {
+      exclude: ['assets/icons/'],
+      enabled: env === 'production' || env === 'staging'
+    },
+
+    // Source Map Options
+    sourcemaps: {
+      enabled: true,
+      extensions: ['js']
+    }
     // Add options here
   });
 
@@ -20,5 +37,12 @@ module.exports = function(defaults) {
   // please specify an object with the list of modules as keys
   // along with the exports of each module as its value.
 
-  return app.toTree();
+  // Roboto Google Font
+  const robotoFonts = new Funnel('node_modules/roboto-npm-webfont/light/fonts', {
+    srcDir: '/',
+    include: ['**/*.woff2'],
+    destDir: '/assets/fonts'
+  });
+
+  return app.toTree(robotoFonts);
 };

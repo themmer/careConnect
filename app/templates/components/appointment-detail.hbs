@@ -1,0 +1,42 @@
+{{#paper-form onSubmit=(action "onSubmit") as |form|}}
+  {{#paper-card class="login flex" as |card|}}
+    {{#card.title as |title|}}
+      {{#title.text as |text|}}
+        {{#text.headline}}
+          CHI Health Lakeside
+        {{/text.headline}}
+      {{/title.text}}
+    {{/card.title}}
+
+    {{#card.content class="layout-column" }}
+
+      <div class="basicHeading">Health Provider Information</div>
+
+      <div>
+        <div><strong>Dr. Craig Meier</strong></div>
+        <div>16901 Lakeside Hills Ct<br />Omaha, NE 68130
+          <a class="left-spacer-5" href="https://goo.gl/maps/7U8piioJT7N2" target="_blank" rel="nofollow">{{#paper-button class="context-action" primary=true iconButton=true}}
+              {{paper-icon "my_location" title="View Map"}} {{/paper-button}}
+          </a>
+        </div>
+        <div>(402) 717-8000</div>
+      </div>
+
+      <div class="basicHeading">Date / Time</div>
+
+      <div>
+        <div>September 24, 2018</div>
+        <div>3:15 PM</div>
+        <h2>Your current wait time: <br /><strong class="warning"> +40 minutes</strong></h2>
+        <h5><i>Last update 53 minutes ago</i></h5>
+      </div>
+
+      {{#card.actions class="layout-row layout-align-end-center" }}
+        {{#paper-button raised=true primary=true}}Reschedule{{/paper-button}}
+        {{#paper-button raised=false primary=false}}Cancel Appointment{{/paper-button}}
+      {{/card.actions}}
+
+      {{#paper-button primary=true onClick=(action "onCancel")}}Go Back{{/paper-button}}
+    {{/card.content}}
+  {{/paper-card}}
+{{/paper-form}}

@@ -1,0 +1,39 @@
+{{#paper-toolbar class="md-whiteframe-1dp page-main-toolbar" as |toolbar|}}
+  {{#toolbar.tools}}
+    {{#paper-sidenav-toggle as |toggleAction|}}
+      {{#paper-button class="hide-gt-sm" onClick=(action toggleAction) iconButton=true}}
+        {{paper-icon "menu"}}
+      {{/paper-button}}
+
+    {{/paper-sidenav-toggle}}
+    <h2>
+      {{#paper-button class="button-breadcrumb" onClick=(action "goToHome")}}Care Connect{{/paper-button}}
+      <span class="hide-xs">
+        {{#if route}}
+          {{paper-icon "chevron-right"}}
+          {{#if subRoute}}
+            {{#paper-button class="button-breadcrumb" onClick=(action "goUpToRoute" route)}}{{route}}{{/paper-button}}
+          {{else}}
+            {{#paper-button class="button-breadcrumb" disabled=true}}{{route}}{{/paper-button}}
+          {{/if}}
+        {{/if}}
+      </span>
+      <span class="hide-xs">
+        {{#if subRoute}}
+          {{paper-icon "chevron-right"}}
+          {{#paper-button class="button-breadcrumb" disabled=true}}{{subRoute}}{{/paper-button}}
+        {{/if}}
+      </span>
+    </h2>
+    <span class="flex"></span>
+    {{#if session.isAuthenticated}}
+      {{#paper-button accent=false onClick=(action "onLogout")}}
+        {{paper-icon "exit_to_app"}} Logout
+      {{/paper-button}}
+    {{else}}
+      {{#paper-button accent=false onClick=(transition-to "login")}}
+        {{paper-icon "forward"}} Logout
+      {{/paper-button}}
+    {{/if}}
+  {{/toolbar.tools}}
+{{/paper-toolbar}}

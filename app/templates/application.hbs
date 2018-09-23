@@ -1,5 +1,50 @@
-{{!-- The following component displays Ember's default welcome message. --}}
-{{welcome-page}}
-{{!-- Feel free to remove this! --}}
+{{#paper-sidenav-container class="site-nav-container" }}
+  {{#paper-sidenav class="md-whiteframe-z2 site-sidenav" lockedOpen="gt-sm" open=isSidenavOpen onToggle=(action (mut isSidenavOpen))}}
+    {{#paper-toolbar}}
+      <div class="layout flex layout-align-center-center">Menu</div>
+    {{/paper-toolbar}}
 
-{{outlet}}
+    {{#paper-content}}
+
+      {{#paper-list}}
+        {{#menu-item active=(is-active "index" currentRouteName) href=(href-to "index")}}Home
+          {{paper-icon "home" title="Home"}}
+        {{/menu-item}}
+        {{#menu-item active=(is-active "schedule" currentRouteName) href=(href-to "schedule")}}Schedule
+          {{paper-icon "date_range" title="Schedule"}}
+        {{/menu-item}}
+        {{#menu-item active=(is-active "calendar" currentRouteName) href=(href-to "calendar")}}My Calendar
+          {{paper-icon "calendar_today" title="Calendar"}}
+        {{/menu-item}}
+        {{#menu-item active=(is-active "forms" currentRouteName) href=(href-to "forms")}}Forms
+          {{paper-icon "edit" title="Forms"}}
+        {{/menu-item}}
+        {{#menu-item active=(is-active "wait-time" currentRouteName) href=(href-to "wait-time")}}Wait Times
+          {{paper-icon "alarm" title="Wait Times"}}
+        {{/menu-item}}
+        {{#menu-item active=(is-active "favorites.me" currentRouteName) href=(href-to "favorites.me")}}Favorites
+          {{paper-icon "favorite" title="Favorites"}}
+        {{/menu-item}}
+        {{#menu-item active=(is-active "profile" currentRouteName) href=(href-to "profile")}}Profile
+          {{paper-icon "account_box" title="Profile"}}
+        {{/menu-item}}
+
+        {{#menu-item active=(is-active "messages" currentRouteName) href=(href-to "profile")}}Messages
+          {{paper-icon "message" title="Messages"}}
+        {{/menu-item}}
+
+        {{#menu-item active=(is-active "notifications" currentRouteName) href=(href-to "profile")}}Notifications
+          {{paper-icon "notification_important" title="Notifications"}}
+        {{/menu-item}}
+
+      {{/paper-list}}
+
+    {{/paper-content}}
+  {{/paper-sidenav}}
+
+  <div id="main" class="flex layout-column" tabindex="-1" role="main">
+    {{outlet}}
+  </div>
+{{/paper-sidenav-container}}
+
+{{paper-toaster parent="#main"}}

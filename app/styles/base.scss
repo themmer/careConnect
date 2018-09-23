@@ -1,0 +1,117 @@
+.text-center {
+  text-align: center;
+}
+
+// .top-padding-none {
+//   padding-top: 0;
+// }
+
+.top-spacer {
+  margin-top: 10px;
+}
+
+.warning {
+  color: $warn;
+  color: color($warn, '500');
+}
+
+// .top-spacer-2 {
+//   margin-top: 20px;
+// }
+
+// .top-spacer-3 {
+//   margin-top: 30px;
+// }
+
+.bottom-spacer {
+  margin-bottom: 10px;
+}
+
+.bottom-spacer-2 {
+  margin-bottom: 20px;
+}
+
+// .left-spacer-half {
+//   margin-left: 5px;
+// }
+
+.left-spacer {
+  margin-left: 10px;
+}
+
+.left-spacer-5 {
+  margin-left: 5px;
+}
+
+// .right-spacer {
+//   margin-right: 10px;
+// }
+
+.right-spacer-half {
+  margin-right: 5px;
+}
+
+// // Give disabled look
+// .low-opacity {
+//   opacity: .30;
+// }
+
+.accent-color {
+  color: color($accent, '400');
+}
+
+// .accent-color-dark {
+//   color: color($accent, '800');
+// }
+
+// .accent-background-color {
+//   background-color: color($accent, '800');
+// }
+
+// .no-wrap {
+//   white-space: nowrap;
+// }
+
+// .height-100 {
+//   height: 100%;
+// }
+
+.basicHeading {
+  padding: 2px;
+  padding-left: 6px;
+  margin-bottom: 8px;
+  margin-top: 6px;
+  background-color: color($primary, '100');
+  background-image: linear-gradient(color($primary, '100'), color($primary, '300'));
+}
+
+.context-action {
+  md-icon {
+    // This is taken from the button shadow
+    box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.3);
+    height: 26px;
+    padding-top: 2px;
+    margin-bottom: 4px;
+  }
+
+  &.md-button.md-icon-button md-icon,
+  &button.md-button.md-fab md-icon {
+    border-radius: 6px;
+    display: inline-block;
+    width: 32px;
+  }
+
+  &.md-button {
+    &.md-icon-button {
+      margin: -4px;
+      padding: 0;
+      height: 26px;
+    }
+  }
+
+  &.md-button.md-accent:not([disabled]) md-icon,
+  &.md-button.md-default-theme.md-accent:not([disabled]) md-icon {
+    background-color: color($accent, '500');
+    color: $white;
+  }
+}

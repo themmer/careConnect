@@ -1,0 +1,43 @@
+$primary: 'teal';
+$accent: 'blue-grey';
+$warn: 'pink';
+
+$white: #ffffff;
+$black: #000000;
+
+// If desired, import the palettes and modify to your liking.
+@import 'color-palette';
+$color-teal: map-merge(
+  $color-teal,
+  (
+    'contrastDefaultColor': $light-contrast-color
+  )
+);
+$color-light-green: map-merge(
+  $color-light-green,
+  (
+    'contrastDefaultColor': $light-contrast-color
+  )
+);
+
+.accent-color-dark {
+  color: color($accent, '800');
+}
+
+// Import the rest of ember-paper.
+@import 'ember-paper';
+
+// Fonts
+@import 'fonts/fonts';
+
+// Icons
+@import 'fonts/icons';
+
+// Base rules.
+@import 'base';
+
+// Components (including non-Ember)
+// @import 'components/all';
+
+// Page sections
+// @import 'sections/all';

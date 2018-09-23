@@ -1,0 +1,117 @@
+{{#if (eq step 1)}}
+  {{#paper-card class="flex" as |card|}}
+    {{#card.title as |title|}}
+      {{#title.text as |text|}}
+        {{#text.headline}}Search for a Provider{{/text.headline}}
+      {{/title.text}}
+    {{/card.title}}
+    {{#card.content class="layout-column" }}
+      {{#paper-form name="login-form" as |form|}}
+        <div class="layout-row layout-align-start-center">
+          {{form.input class="flex"
+          label="Enter Provider Name"
+          value=search.name
+          onChange=(action (mut search.name))
+          required=false
+          icon="person"
+          errorMessages=(hash required="Please enter valid provider name.")
+          pattern="\w+"}}
+        </div>
+
+        <div class="layout-row layout-xs-column layout-gt-sm-align-start-center">
+          {{form.input class="flex flex-xs-100"
+          label="Enter City"
+          value=search.city
+          onChange=(action (mut search.city))
+          required=false
+          icon="location_on"}}
+
+          {{#paper-select class="flex flex-xs-100" disabled=false label="State" options=states selected=search.state searchPlaceholder="Search for a State" searchField="name"
+          onChange=(action (mut search.state)) as |state|}}
+            {{lookup-state-label state}}
+          {{/paper-select}}
+        </div>
+        <div class="layout-row layout-xs-column layout-gt-sm-align-start-center">
+          {{form.input class="flex flex-xs-100"
+          label="Enter Zip Code"
+          value=search.zipCode
+          onChange=(action (mut search.zipCode))
+          required=false
+          icon="location_on"}}
+
+          {{form.input class="flex flex-xs-100"
+          label="Enter Mile Radius"
+          value=search.mileRadius
+          onChange=(action (mut search.mileRadius))
+          required=false
+          icon="location_on"}}
+        </div>
+
+        {{#card.actions class="layout-row" }}
+          {{#paper-button primary=true raised=true disabled=form.isInvalid onClick=(action "onSubmit") }}
+            search
+          {{/paper-button}}
+
+          {{#paper-button primary=false raised=false onClick=(action "onCancel")}}
+            Cancel
+          {{/paper-button}}
+        {{/card.actions}}
+      {{/paper-form}}
+    {{/card.content}}
+  {{/paper-card}}
+
+  {{#paper-card as |card|}}
+    {{#paper-item class="md-2-line" }}
+      <div class="md-list-item-text">
+        <div>
+          <span class="md-body-2">
+            <div>CHI Health Lakeside</div>
+            <div>Omaha, NE 68130</div>
+          </span>
+        </div>
+      </div>
+      {{paper-divider}}
+      <div class="layout-row layout-xs-column">
+        {{#paper-button primary=true raised=true onClick=(action "submitStep")}}Select{{/paper-button}}
+      </div>
+    {{/paper-item}}
+  {{/paper-card}}
+{{/if}}
+
+{{#if (eq step 2)}}
+  {{#paper-card class="flex" as |card|}}
+    {{#card.title as |title|}}
+      {{#title.text as |text|}}
+        {{#text.headline}}Select a Doctor{{/text.headline}}
+      {{/title.text}}
+    {{/card.title}}
+    {{#card.content class="layout-column" }}
+      {{#paper-item class="md-2-line" }}
+        <div class="md-list-item-text">
+          <div>
+            <span class="md-body-2">
+              <div>Dr. Craig Meier</div>
+              <div>Internal Medicine</div>
+            </span>
+          </div>
+        </div>
+        {{paper-divider}}
+        <div class="layout-row layout-xs-column">
+          {{#paper-button primary=true raised=true onClick=(action "submitStep")}}Select{{/paper-button}}
+        </div>
+      {{/paper-item}}
+
+      {{#card.actions class="layout-row" }}
+        {{#paper-button primary=true raised=false onClick=(action "submitStep")}}
+          Any Available Doctor
+        {{/paper-button}}
+      {{/card.actions}}
+    {{/card.content}}
+  {{/paper-card}}
+{{/if}}
+
+{{#if (eq step 3)}}
+  3
+{{/if}}
+
+<br /><br />
